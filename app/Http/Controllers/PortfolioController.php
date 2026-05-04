@@ -8,7 +8,6 @@ use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\SocialLink;
-use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
