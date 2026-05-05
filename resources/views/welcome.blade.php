@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dimas Aswito | Software Engineer</title>
+  <title>{{ $profile->name ?? 'Dimas Aswito' }} | {{ $profile->headline ?? 'Software Engineer' }}</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -52,7 +52,7 @@
   <nav class="fixed top-0 w-full z-50 glass">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#" class="text-lg font-bold text-slate-100 tracking-tight">
-        Dimas Aswito
+        {{ $profile->name ?? 'Dimas Aswito' }}
       </a>
       
       <!-- Desktop Links -->
@@ -96,11 +96,11 @@
       </p>
       
       <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-100 mb-6 reveal" style="transition-delay: 100ms;">
-        Dimas Aswito
+        {{ $profile->name ?? 'Dimas Aswito' }}
       </h1>
       
       <p class="text-lg md:text-2xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed reveal" style="transition-delay: 200ms;">
-        Software Engineer & Full-stack Developer. Building functional, high-performance web and mobile solutions.
+        {{ $profile->description ?? 'Software Engineer & Full-stack Developer. Building functional, high-performance web and mobile solutions.' }}
       </p>
       
       <div class="reveal" style="transition-delay: 300ms;">
@@ -122,7 +122,7 @@
           <h2 class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">About Me</h2>
           <h3 class="text-3xl md:text-4xl font-bold text-slate-100 mb-8">Who I Am</h3>
           <p class="text-slate-400 leading-relaxed text-lg mb-10">
-            I'm an Informatics Engineering graduate from <span class="text-slate-200 font-semibold">Politeknik Negeri Jember (POLIJE)</span> with a strong passion for building software that creates real impact. My journey includes intensive training at <span class="text-slate-200 font-semibold">Bangkit Academy</span> by Google, GoTo, and Traveloka, where I honed my skills in mobile development. I'm also the co-founder of a software house, delivering tailored digital solutions for businesses and communities.
+            {{ $profile->about_text ?? "I'm an Informatics Engineering graduate from Politeknik Negeri Jember (POLIJE) with a strong passion for building software that creates real impact. My journey includes intensive training at Bangkit Academy by Google, GoTo, and Traveloka, where I honed my skills in mobile development. I'm also the co-founder of a software house, delivering tailored digital solutions for businesses and communities." }}
           </p>
           
           <!-- GitHub Contribution Card -->
@@ -131,11 +131,11 @@
               <div class="flex items-center gap-3">
                 <i data-lucide="github" class="w-6 h-6 text-slate-200"></i>
                 <div>
-                  <div class="text-sm font-bold text-slate-200">@aswitodimas</div>
+                  <div class="text-sm font-bold text-slate-200">{{ '@' . ($profile->github_username ?? 'aswitodimas') }}</div>
                   <div class="text-xs text-slate-500">Contribution Activity</div>
                 </div>
               </div>
-              <a href="https://github.com/aswitodimas" target="_blank" rel="noopener noreferrer" class="text-xs font-medium flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors">
+              <a href="https://github.com/{{ $profile->github_username ?? 'aswitodimas' }}" target="_blank" rel="noopener noreferrer" class="text-xs font-medium flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors">
                 View Profile <i data-lucide="external-link" class="w-3 h-3"></i>
               </a>
             </div>
@@ -161,30 +161,14 @@
             Tech Stack
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            @forelse($skills as $skill)
             <div class="group bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col items-center gap-3 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
-              <i class="devicon-laravel-plain colored text-4xl group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm font-medium text-slate-300">Laravel</span>
+              <i class="{{ $skill->icon_class }} colored text-4xl group-hover:scale-110 transition-transform"></i>
+              <span class="text-sm font-medium text-slate-300">{{ $skill->name }}</span>
             </div>
-            <div class="group bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col items-center gap-3 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
-              <i class="devicon-react-original colored text-4xl group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm font-medium text-slate-300">React</span>
-            </div>
-            <div class="group bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col items-center gap-3 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
-              <i class="devicon-nodejs-plain colored text-4xl group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm font-medium text-slate-300">Node.js</span>
-            </div>
-            <div class="group bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col items-center gap-3 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
-              <i class="devicon-flutter-plain colored text-4xl group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm font-medium text-slate-300">Flutter</span>
-            </div>
-            <div class="group bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col items-center gap-3 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
-              <i class="devicon-kotlin-plain colored text-4xl group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm font-medium text-slate-300">Kotlin</span>
-            </div>
-            <div class="group bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col items-center gap-3 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
-              <i class="devicon-supabase-original colored text-4xl group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm font-medium text-slate-300">Supabase</span>
-            </div>
+            @empty
+            <p class="col-span-2 sm:col-span-3 text-slate-500 text-sm">No skills found.</p>
+            @endforelse
           </div>
         </div>
       </div>
